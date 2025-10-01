@@ -9,6 +9,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.FrameLayout
 import android.widget.LinearLayout
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -25,11 +26,20 @@ class MainMenuActivity : AppCompatActivity() {
         val currentLevelText = findViewById<TextView>(R.id.currentLevelText)
         val activeLevelTitle = findViewById<TextView>(R.id.activeLevelTitle)
         val activeLevelDesc = findViewById<TextView>(R.id.activeLevelDesc)
+        val progressText = findViewById<TextView>(R.id.progressText)
+        val progressBar = findViewById<ProgressBar>(R.id.progressBar)
 
         // Mevcut leveli göster
         val currentLevel = LevelSystem.getCurrentLevel(this)
         val highestLevel = LevelSystem.getHighestLevel(this)
+        val totalLevels = LevelSystem.getAllLevels().size
+
         currentLevelText.text = "Mevcut Level: $currentLevel | En Yüksek Level: $highestLevel"
+
+        // İlerleme durumunu güncelle
+        progressText.text = "İlerleme: $highestLevel/$totalLevels"
+        progressBar.max = totalLevels
+        progressBar.progress = highestLevel
 
         // Aktif level bilgilerini güncelle
         updateActiveLevelInfo(activeLevelTitle, activeLevelDesc, currentLevel)
@@ -68,7 +78,12 @@ class MainMenuActivity : AppCompatActivity() {
             2 to "Günlük hayat kelimeleri",
             3 to "Doğa ve çevre",
             4 to "Meslekler ve iş",
-            5 to "Yerler ve mekanlar"
+            5 to "Yerler ve mekanlar",
+            6 to "Sıfatlar ve özellikler",
+            7 to "Zaman ifadeleri",
+            8 to "Yemek ve içecek",
+            9 to "Spor ve aktiviteler",
+            10 to "Teknoloji ve gelecek"
         )
         
         desc.text = descriptions[level] ?: "Kelime öğren"

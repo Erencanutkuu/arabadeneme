@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Ana garaj zemini -->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:startColor="#4A4A4A"
+                android:endColor="#2A2A2A"
+                android:angle="270" />
+        </shape>
+    </item>
+
+    <!-- Garaj duvarları -->
+    <item android:left="0dp" android:width="20dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#3A3A3A" />
+        </shape>
+    </item>
+
+    <item android:right="0dp" android:width="20dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#3A3A3A" />
+        </shape>
+    </item>
+
+    <!-- Garaj tavanı -->
+    <item android:top="0dp" android:height="80dp">
+        <shape android:shape="rectangle">
+            <gradient
+                android:startColor="#1A1A1A"
+                android:endColor="#2A2A2A"
+                android:angle="90" />
+        </shape>
+    </item>
+
+    <!-- Tavan kirişleri -->
+    <item android:top="20dp" android:height="8dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#505050" />
+        </shape>
+    </item>
+
+    <item android:top="40dp" android:height="6dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#444444" />
+        </shape>
+    </item>
+
+    <item android:top="60dp" android:height="4dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#383838" />
+        </shape>
+    </item>
+
+    <!-- Zemin çizgileri -->
+    <item android:bottom="0dp" android:height="2dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#666666" />
+        </shape>
+    </item>
+
+    <!-- Garaj kapısı parçaları -->
+    <item android:top="80dp" android:height="100dp">
+        <shape android:shape="rectangle">
+            <stroke
+                android:width="1dp"
+                android:color="#606060" />
+            <solid android:color="@android:color/transparent" />
+        </shape>
+    </item>
+
+    <item android:top="180dp" android:height="100dp">
+        <shape android:shape="rectangle">
+            <stroke
+                android:width="1dp"
+                android:color="#606060" />
+            <solid android:color="@android:color/transparent" />
+        </shape>
+    </item>
+
+</layer-list>

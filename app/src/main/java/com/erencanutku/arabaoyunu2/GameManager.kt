@@ -3,13 +3,15 @@ package com.erencanutku.arabaoyunu2
 import android.content.Context
 import android.util.Log
 import android.widget.Button
+import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 
 class GameManager(
     private val context: Context,
     private val scoreText: TextView,
-    private val levelText: TextView
+    private val levelText: TextView,
+    private val fuelProgressBar: ProgressBar? = null
 ) {
     private var currentLevel: Level? = null
     private var currentQuestionIndex = 0
@@ -17,7 +19,7 @@ class GameManager(
     private var questions: List<Question> = emptyList()
     private var maxQuestionsInLevel = 0
     private var score = 0
-    private var lives = GameConfig.INITIAL_LIVES
+    private var fuel = 100f // Yakıt seviyesi (0-100)
     private var obstacleSpeed = 7f
     private var isGameRunning = true
 
@@ -42,14 +44,20 @@ class GameManager(
     fun getCurrentQuestionIndex(): Int = currentQuestionIndex
     fun getObstacleSpeed(): Float = obstacleSpeed
     fun isGameRunning(): Boolean = isGameRunning
-    fun getLives(): Int = lives
+    fun getFuel(): Float = fuel
     fun getScore(): Int = score
 
-    fun loseLife(): Boolean {
-        lives--
-        if (lives < 0) lives = 0
+    fun loseFuel(amount: Float = 15f): Boolean {
+        fuel -= amount
+        if (fuel < 0f) fuel = 0f
         updateScore()
-        return lives == 0
+        return fuel == 0f
+    }
+
+    fun addFuel(amount: Float = 20f) {
+        fuel += amount
+        if (fuel > 100f) fuel = 100f
+        updateScore()
     }
 
 
@@ -66,7 +74,8 @@ class GameManager(
         if (isCorrect) {
             score++
             correctAnswersInLevel++
-            Toast.makeText(context, "✅ Doğru! +1 puan", Toast.LENGTH_SHORT).show()
+            addFuel(20f) // Doğru cevapta 20% yakıt ekle
+            Toast.makeText(context, "✅ Doğru! +20% Yakıt", Toast.LENGTH_SHORT).show()
             Log.d("DEBUG_LEVEL", "✅ Doğru cevaplandı. correctAnswersInLevel = $correctAnswersInLevel / $maxQuestionsInLevel")
 
             if (correctAnswersInLevel >= maxQuestionsInLevel) {
@@ -81,12 +90,14 @@ class GameManager(
             }
 
         } else {
-            lives--
-            Toast.makeText(context, "❌ Yanlış! Can: $lives", Toast.LENGTH_SHORT).show()
+            val fuelLoss = 25f // Yanlış cevapta daha fazla yakıt kaybı
+            fuel -= fuelLoss
+            if (fuel < 0f) fuel = 0f
+            Toast.makeText(context, "❌ Yanlış! -25% Yakıt", Toast.LENGTH_SHORT).show()
 
-            if (lives <= 0) {
+            if (fuel <= 0f) {
                 isGameRunning = false
-                Toast.makeText(context, "💀 Oyun bitti!", Toast.LENGTH_LONG).show()
+                Toast.makeText(context, "⛽ Yakıt bitti! Oyun sona erdi!", Toast.LENGTH_LONG).show()
                 onGameOver()
                 return
             }
@@ -113,7 +124,18 @@ class GameManager(
 
 
     private fun updateScore() {
-        scoreText.text = "Skor: $score | Doğru: $correctAnswersInLevel/$maxQuestionsInLevel"
+        scoreText.text = "⛽ ${fuel.toInt()}% | Doğru: $correctAnswersInLevel/$maxQuestionsInLevel"
+        fuelProgressBar?.progress = fuel.toInt()
+
+        // Yakıt seviyesine göre renk değiştir
+        fuelProgressBar?.let { progressBar ->
+            val color = when {
+                fuel > 50f -> android.graphics.Color.parseColor("#4CAF50") // Yeşil
+                fuel > 25f -> android.graphics.Color.parseColor("#FF9800") // Turuncu
+                else -> android.graphics.Color.parseColor("#F44336") // Kırmızı
+            }
+            progressBar.progressTintList = android.content.res.ColorStateList.valueOf(color)
+        }
     }
 
     private fun updateLevelDisplay() {
@@ -122,7 +144,7 @@ class GameManager(
 
     fun resetGame() {
         score = 0
-        lives = GameConfig.INITIAL_LIVES
+        fuel = 100f
         isGameRunning = true
         updateScore()
     }

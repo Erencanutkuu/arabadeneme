@@ -38,6 +38,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var scoreText: TextView
     private lateinit var levelText: TextView
     private lateinit var rootLayout: ConstraintLayout
+    private lateinit var fuelProgressBar: ProgressBar
 
     private var answerHandled = false
     private var collisionHandled = false
@@ -50,12 +51,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // Test için geçici olarak level 3'e geç
-        LevelSystem.setCurrentLevel(this, 3)
+        // Test için level 1'den başla
+        LevelSystem.setCurrentLevel(this, 1)
 
         initializeViews()
 
-        gameManager = GameManager(this, scoreText, levelText)
+        gameManager = GameManager(this, scoreText, levelText, fuelProgressBar)
         gameManager.initializeLevel()
 
         carController = CarController(
@@ -64,7 +65,6 @@ class MainActivity : AppCompatActivity() {
             gameManager
         ) {
             Toast.makeText(this, "⛔️ Daha fazla gidemezsin!", Toast.LENGTH_SHORT).show()
-            scoreText.text = "Can: ${gameManager.getLives()}"
         }
 
         setupGestureDetection()
@@ -109,6 +109,7 @@ class MainActivity : AppCompatActivity() {
         scoreText = findViewById(R.id.scoreText)
         levelText = findViewById(R.id.levelText)
         lottieSuccess = findViewById(R.id.lottieSuccess)
+        fuelProgressBar = findViewById(R.id.fuelProgressBar)
 
         obstacles = arrayOf(
             findViewById(R.id.obstacle),
@@ -135,6 +136,14 @@ class MainActivity : AppCompatActivity() {
                 moveObstacles(speed)
                 if (isQuestionMode) moveQuestions(speed) else hideQuestions()
                 checkCollisions()
+
+                // Sürekli yakıt tüketimi (her frame'de küçük miktar)
+                val isGameOver = gameManager.loseFuel(0.05f) // Her 16ms'de 0.05% yakıt tüketimi
+                if (isGameOver) {
+                    endGame()
+                    return
+                }
+
                 currentCooldown++
                 if (currentCooldown >= questionCooldown) {
                     isQuestionMode = !isQuestionMode
@@ -183,8 +192,8 @@ class MainActivity : AppCompatActivity() {
             if (isColliding(carX, carY, carW, carH, obs.x, obs.y, obs.width, obs.height)) {
                 if (!collisionHandled) {
                     collisionHandled = true
-                    val isGameOver = gameManager.loseLife()
-                    scoreText.text = "Can: ${gameManager.getLives()}"
+                    val isGameOver = gameManager.loseFuel(15f) // Çarpışmada 15% yakıt kaybı
+                    Toast.makeText(this, "💥 Çarpışma! -15% Yakıt", Toast.LENGTH_SHORT).show()
                     if (isGameOver) endGame()
                     else handler.postDelayed({ collisionHandled = false }, 1500)
                 }
@@ -204,7 +213,25 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun isColliding(x1: Float, y1: Float, w1: Int, h1: Int, x2: Float, y2: Float, w2: Int, h2: Int): Boolean {
-        return !(x1 + w1 < x2 || x1 > x2 + w2 || y1 + h1 < y2 || y1 > y2 + h2)
+        // Araba şeklinde hitbox: arabanın gerçek şekline göre ayarlanmış
+        val carWidthPadding = 20f // Yanlarda daha fazla boşluk (arabanın oval şekli için)
+        val carHeightPadding = 8f // Üst ve altta daha az boşluk (arabanın uzun şekli için)
+        val obstaclePadding = 12f // Engellerin kenarlarından bu kadar pixel içerde hitbox
+
+        // Arabanın gerçek hitbox koordinatları (araba şeklinde: yanlarda dar, uzunlamasına geniş)
+        val carLeft = x1 + carWidthPadding
+        val carRight = x1 + w1 - carWidthPadding
+        val carTop = y1 + carHeightPadding
+        val carBottom = y1 + h1 - carHeightPadding
+
+        // Engelin hitbox koordinatları
+        val obstacleLeft = x2 + obstaclePadding
+        val obstacleRight = x2 + w2 - obstaclePadding
+        val obstacleTop = y2 + obstaclePadding
+        val obstacleBottom = y2 + h2 - obstaclePadding
+
+        // Çarpışma kontrolü
+        return !(carRight < obstacleLeft || carLeft > obstacleRight || carBottom < obstacleTop || carTop > obstacleBottom)
     }
 
     private fun processAnswer(isCorrect: Boolean) {
@@ -242,8 +269,7 @@ class MainActivity : AppCompatActivity() {
             }
         )
 
-        // Can sayısını güncelle
-        scoreText.text = "Can: ${gameManager.getLives()}"
+        // Yakıt durumunu güncelle (GameManager'da otomatik güncelleniyor)
 
         // Butonları eski haline döndür
         handler.postDelayed({

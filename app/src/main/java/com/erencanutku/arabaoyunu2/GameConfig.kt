@@ -72,10 +72,10 @@ class CarController(
 
         if (blockedAttempts >= 2) {
             blockedAttempts = 0
-            val lost = gameManager.loseLife()
+            val lost = gameManager.loseFuel(10f)
             Toast.makeText(
                 carImage.context,
-                "💥 Kenara çarptın! Can: ${gameManager.getLives()}",
+                "💥 Kenara çarptın! -10% Yakıt",
                 Toast.LENGTH_SHORT
             ).show()
         }

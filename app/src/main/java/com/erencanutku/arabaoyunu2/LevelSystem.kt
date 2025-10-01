@@ -79,6 +79,71 @@ object LevelSystem {
             Question("hotel", "otel", "pansiyon"),
             Question("museum", "müze", "kütüphane"),
             Question("theater", "tiyatro", "sinema")
+        ), 1),
+
+        Level(6, listOf(
+            Question("beautiful", "güzel", "çirkin"),
+            Question("big", "büyük", "küçük"),
+            Question("fast", "hızlı", "yavaş"),
+            Question("cold", "soğuk", "sıcak"),
+            Question("happy", "mutlu", "üzgün"),
+            Question("old", "yaşlı", "genç"),
+            Question("new", "yeni", "eski"),
+            Question("good", "iyi", "kötü"),
+            Question("easy", "kolay", "zor"),
+            Question("clean", "temiz", "kirli")
+        ), 1),
+
+        Level(7, listOf(
+            Question("morning", "sabah", "akşam"),
+            Question("afternoon", "öğleden sonra", "öğleden önce"),
+            Question("evening", "akşam", "sabah"),
+            Question("night", "gece", "gündüz"),
+            Question("today", "bugün", "yarın"),
+            Question("yesterday", "dün", "bugün"),
+            Question("tomorrow", "yarın", "dün"),
+            Question("week", "hafta", "ay"),
+            Question("month", "ay", "yıl"),
+            Question("year", "yıl", "gün")
+        ), 1),
+
+        Level(8, listOf(
+            Question("breakfast", "kahvaltı", "akşam yemeği"),
+            Question("lunch", "öğle yemeği", "kahvaltı"),
+            Question("dinner", "akşam yemeği", "öğle yemeği"),
+            Question("bread", "ekmek", "peynir"),
+            Question("cheese", "peynir", "ekmek"),
+            Question("milk", "süt", "çay"),
+            Question("tea", "çay", "kahve"),
+            Question("coffee", "kahve", "çay"),
+            Question("meat", "et", "balık"),
+            Question("fish", "balık", "et")
+        ), 1),
+
+        Level(9, listOf(
+            Question("sport", "spor", "oyun"),
+            Question("football", "futbol", "basketbol"),
+            Question("basketball", "basketbol", "futbol"),
+            Question("tennis", "tenis", "voleybol"),
+            Question("swimming", "yüzme", "koşu"),
+            Question("running", "koşu", "yürüme"),
+            Question("dancing", "dans", "şarkı"),
+            Question("singing", "şarkı", "dans"),
+            Question("reading", "okuma", "yazma"),
+            Question("writing", "yazma", "okuma")
+        ), 1),
+
+        Level(10, listOf(
+            Question("technology", "teknoloji", "bilim"),
+            Question("internet", "internet", "telefon"),
+            Question("website", "web sitesi", "uygulama"),
+            Question("software", "yazılım", "donanım"),
+            Question("hardware", "donanım", "yazılım"),
+            Question("smartphone", "akıllı telefon", "tablet"),
+            Question("tablet", "tablet", "bilgisayar"),
+            Question("laptop", "dizüstü", "masaüstü"),
+            Question("camera", "kamera", "fotoğraf"),
+            Question("video", "video", "ses")
         ), 1)
     )
     

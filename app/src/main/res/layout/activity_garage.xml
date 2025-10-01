@@ -1,80 +1,189 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/garageLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal"
-    android:gravity="center"
-    android:background="@drawable/background21"
-    android:padding="24dp">
+    android:orientation="vertical"
+    android:background="@drawable/garage_background"
+    android:gravity="center">
 
-    <!-- Araba 1 -->
-    <FrameLayout
+    <!-- Garaj Başlığı -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="🏠 MY GARAGE"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:textColor="#CCCCCC"
+        android:gravity="center"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="60dp"
+        android:shadowColor="#000000"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="2" />
+
+    <!-- Arabalar Grid -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginHorizontal="16dp">
+
+        <!-- Araba 1 -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="0dp"
+            android:layout_height="160dp"
+            android:layout_weight="1"
+            android:layout_margin="8dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="12dp"
+            app:cardBackgroundColor="#555555">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="16dp">
+
+                <ImageView
+                    android:id="@+id/carOption1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/arabaagorsel"
+                    android:scaleType="centerCrop"
+                    android:layout_gravity="center" />
+
+                <ImageView
+                    android:id="@+id/lockIcon1"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/ic_lock"
+                    android:layout_gravity="top|end"
+                    android:layout_margin="6dp"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Green Car"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:textColor="#FFFFFF"
+                    android:gravity="center"
+                    android:layout_gravity="bottom"
+                    android:background="#88000000"
+                    android:padding="4dp" />
+            </FrameLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Araba 2 -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="0dp"
+            android:layout_height="160dp"
+            android:layout_weight="1"
+            android:layout_margin="8dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="12dp"
+            app:cardBackgroundColor="#555555">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="16dp">
+
+                <ImageView
+                    android:id="@+id/carOption2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/arabagorsell"
+                    android:scaleType="centerCrop"
+                    android:layout_gravity="center" />
+
+                <ImageView
+                    android:id="@+id/lockIcon2"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/ic_lock"
+                    android:layout_gravity="top|end"
+                    android:layout_margin="6dp"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Silver Car"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:textColor="#FFFFFF"
+                    android:gravity="center"
+                    android:layout_gravity="bottom"
+                    android:background="#88000000"
+                    android:padding="4dp" />
+            </FrameLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Araba 3 -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="0dp"
+            android:layout_height="160dp"
+            android:layout_weight="1"
+            android:layout_margin="8dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="12dp"
+            app:cardBackgroundColor="#555555">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="16dp">
+
+                <ImageView
+                    android:id="@+id/carOption3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/arabagorsel"
+                    android:scaleType="centerCrop"
+                    android:layout_gravity="center" />
+
+                <ImageView
+                    android:id="@+id/lockIcon3"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/ic_lock"
+                    android:layout_gravity="top|end"
+                    android:layout_margin="6dp"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Gray Car"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:textColor="#FFFFFF"
+                    android:gravity="center"
+                    android:layout_gravity="bottom"
+                    android:background="#88000000"
+                    android:padding="4dp" />
+            </FrameLayout>
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+    <!-- Garaj Bilgisi -->
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="12dp">
-
-        <ImageView
-            android:id="@+id/carOption1"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:src="@drawable/arabaagorsel"
-            android:scaleType="fitCenter" />
-
-        <ImageView
-            android:id="@+id/lockIcon1"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:src="@drawable/ic_lock"
-            android:layout_gravity="top|end"
-            android:layout_margin="4dp"
-            android:visibility="gone" />
-    </FrameLayout>
-
-    <!-- Araba 2 -->
-    <FrameLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="12dp">
-
-        <ImageView
-            android:id="@+id/carOption2"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:src="@drawable/arabagorsell"
-            android:scaleType="fitCenter" />
-
-        <ImageView
-            android:id="@+id/lockIcon2"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:src="@drawable/ic_lock"
-            android:layout_gravity="top|end"
-            android:layout_margin="4dp"
-            android:visibility="gone" />
-    </FrameLayout>
-
-    <!-- Araba 3 -->
-    <FrameLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="12dp">
-
-        <ImageView
-            android:id="@+id/carOption3"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:src="@drawable/arabagorsel"
-            android:scaleType="fitCenter" />
-
-        <ImageView
-            android:id="@+id/lockIcon3"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:src="@drawable/ic_lock"
-            android:layout_gravity="top|end"
-            android:layout_margin="4dp"
-            android:visibility="gone" />
-    </FrameLayout>
+        android:text="💰 500 para ile araba satın alabilirsin"
+        android:textSize="14sp"
+        android:textColor="#CCCCCC"
+        android:layout_marginTop="24dp"
+        android:gravity="center"
+        android:shadowColor="#000000"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="2" />
 
 </LinearLayout>
