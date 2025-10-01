@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/garageLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:gravity="center"
+    android:background="@drawable/background21"
+    android:padding="24dp">
+
+    <!-- Araba 1 -->
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp">
+
+        <ImageView
+            android:id="@+id/carOption1"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/arabaagorsel"
+            android:scaleType="fitCenter" />
+
+        <ImageView
+            android:id="@+id/lockIcon1"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:src="@drawable/ic_lock"
+            android:layout_gravity="top|end"
+            android:layout_margin="4dp"
+            android:visibility="gone" />
+    </FrameLayout>
+
+    <!-- Araba 2 -->
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp">
+
+        <ImageView
+            android:id="@+id/carOption2"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/arabagorsell"
+            android:scaleType="fitCenter" />
+
+        <ImageView
+            android:id="@+id/lockIcon2"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:src="@drawable/ic_lock"
+            android:layout_gravity="top|end"
+            android:layout_margin="4dp"
+            android:visibility="gone" />
+    </FrameLayout>
+
+    <!-- Araba 3 -->
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp">
+
+        <ImageView
+            android:id="@+id/carOption3"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/arabagorsel"
+            android:scaleType="fitCenter" />
+
+        <ImageView
+            android:id="@+id/lockIcon3"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:src="@drawable/ic_lock"
+            android:layout_gravity="top|end"
+            android:layout_margin="4dp"
+            android:visibility="gone" />
+    </FrameLayout>
+
+</LinearLayout>

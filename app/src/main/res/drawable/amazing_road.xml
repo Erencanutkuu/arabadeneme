@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Ana yol zemini (koyu asfalt) -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#0D0D0D" />
+        </shape>
+    </item>
+    
+    <!-- Yol kenarları (koyu yeşil çimen) -->
+    <item android:top="0dp" android:bottom="0dp" android:left="0dp" android:right="0dp">
+        <shape android:shape="rectangle">
+            <stroke android:width="120dp" android:color="#1B5E20" />
+        </shape>
+    </item>
+    
+    <!-- Sol şerit çizgisi (beyaz kesikli) -->
+    <item android:top="0dp" android:bottom="0dp" android:left="0dp" android:right="0dp">
+        <shape android:shape="rectangle">
+            <stroke android:width="4dp" android:color="#FFFFFF" android:dashWidth="50dp" android:dashGap="50dp" />
+        </shape>
+    </item>
+    
+    <!-- Orta şerit çizgisi (çift sarı) -->
+    <item android:top="0dp" android:bottom="0dp" android:left="0dp" android:right="0dp">
+        <shape android:shape="rectangle">
+            <stroke android:width="3dp" android:color="#FFD700" android:dashWidth="40dp" android:dashGap="40dp" />
+        </shape>
+    </item>
+    
+    <!-- Orta şerit çizgisi 2 (çift sarı) -->
+    <item android:top="0dp" android:bottom="0dp" android:left="0dp" android:right="0dp">
+        <shape android:shape="rectangle">
+            <stroke android:width="3dp" android:color="#FFD700" android:dashWidth="40dp" android:dashGap="40dp" />
+        </shape>
+    </item>
+    
+    <!-- Sağ şerit çizgisi (beyaz kesikli) -->
+    <item android:top="0dp" android:bottom="0dp" android:left="0dp" android:right="0dp">
+        <shape android:shape="rectangle">
+            <stroke android:width="4dp" android:color="#FFFFFF" android:dashWidth="50dp" android:dashGap="50dp" />
+        </shape>
+    </item>
+    
+    <!-- Yol kenar çizgileri (sarı sürekli) -->
+    <item android:top="0dp" android:bottom="0dp" android:left="0dp" android:right="0dp">
+        <shape android:shape="rectangle">
+            <stroke android:width="5dp" android:color="#FFC107" />
+        </shape>
+    </item>
+    
+    <!-- Yol ortasındaki beyaz çizgi (sürekli) -->
+    <item android:top="0dp" android:bottom="0dp" android:left="0dp" android:right="0dp">
+        <shape android:shape="rectangle">
+            <stroke android:width="3dp" android:color="#FFFFFF" />
+        </shape>
+    </item>
+    
+    <!-- Yol üzerindeki gölge efekti -->
+    <item android:top="0dp" android:bottom="0dp" android:left="0dp" android:right="0dp">
+        <shape android:shape="rectangle">
+            <gradient 
+                android:startColor="#00000000"
+                android:centerColor="#33000000"
+                android:endColor="#00000000"
+                android:angle="90" />
+        </shape>
+    </item>
+</layer-list> 
