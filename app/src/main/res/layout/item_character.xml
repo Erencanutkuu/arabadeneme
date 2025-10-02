@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="4dp"
+    app:cardBackgroundColor="#555555"
+    android:layout_margin="4dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?android:attr/selectableItemBackground">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:gravity="center">
+
+        <!-- Character Emoji -->
+        <TextView
+            android:id="@+id/characterEmoji"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="😊"
+            android:textSize="40sp"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Character Name -->
+        <TextView
+            android:id="@+id/characterName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Başlangıç Sürücüsü"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:gravity="center"
+            android:layout_marginBottom="4dp" />
+
+        <!-- Special Ability -->
+        <TextView
+            android:id="@+id/characterAbility"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Başlangıç bonusu +10 puan"
+            android:textSize="10sp"
+            android:textColor="#CCCCCC"
+            android:gravity="center"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Status (Selected/Locked/Price) -->
+        <TextView
+            android:id="@+id/characterStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="✓ Seçili"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:background="#4CAF50"
+            android:gravity="center"
+            android:padding="6dp" />
+
+        <!-- Unlock Requirement (for locked characters) -->
+        <TextView
+            android:id="@+id/unlockRequirement"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Level 3'e ulaş"
+            android:textSize="9sp"
+            android:textColor="#FFAB40"
+            android:gravity="center"
+            android:layout_marginTop="4dp"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+    <!-- Lock Overlay -->
+    <View
+        android:id="@+id/lockOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#AA000000"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/lockIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="🔒"
+        android:textSize="24sp"
+        android:layout_gravity="center"
+        android:visibility="gone" />
+
+</androidx.cardview.widget.CardView>

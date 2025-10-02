@@ -37,6 +37,9 @@ class MainMenuActivity : AppCompatActivity() {
         val settingsButton = findViewById<TextView>(R.id.settingsButton)
         val dailyRewardsButton = findViewById<TextView>(R.id.dailyRewardsButton)
         val mapSelectionButton = findViewById<TextView>(R.id.mapSelectionButton)
+        val leaderboardButton = findViewById<TextView>(R.id.leaderboardButton)
+        val charactersButton = findViewById<TextView>(R.id.charactersButton)
+        val analyticsButton = findViewById<TextView>(R.id.analyticsButton)
 
         // Mevcut leveli göster
         val currentLevel = LevelSystem.getCurrentLevel(this)
@@ -76,6 +79,21 @@ class MainMenuActivity : AppCompatActivity() {
         // Map Selection butonu
         mapSelectionButton.setOnClickListener {
             startActivity(Intent(this, MapSelectionActivity::class.java))
+        }
+
+        // Leaderboard butonu
+        leaderboardButton.setOnClickListener {
+            startActivity(Intent(this, LeaderboardActivity::class.java))
+        }
+
+        // Characters butonu
+        charactersButton.setOnClickListener {
+            startActivity(Intent(this, CharacterSelectionActivity::class.java))
+        }
+
+        // Analytics butonu
+        analyticsButton.setOnClickListener {
+            startActivity(Intent(this, AnalyticsActivity::class.java))
         }
 
         // Duolingo tarzı level path'i oluştur

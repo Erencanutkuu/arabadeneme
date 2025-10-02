@@ -41,6 +41,9 @@
         <activity android:name=".DailyRewardsActivity" />
         <activity android:name=".MapSelectionActivity" />
         <activity android:name=".LevelCompletionActivity" />
+        <activity android:name=".LeaderboardActivity" />
+        <activity android:name=".CharacterSelectionActivity" />
+        <activity android:name=".AnalyticsActivity" />
     </application>
 
 </manifest>

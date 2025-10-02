@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:padding="12dp"
+    android:layout_marginVertical="2dp"
+    android:background="?android:attr/selectableItemBackground">
+
+    <!-- Rank -->
+    <TextView
+        android:id="@+id/rankText"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:text="1"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        android:gravity="center"
+        android:background="@drawable/rank_circle"
+        android:layout_marginEnd="12dp" />
+
+    <!-- Character Emoji -->
+    <TextView
+        android:id="@+id/characterEmoji"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="😊"
+        android:textSize="24sp"
+        android:layout_marginEnd="12dp" />
+
+    <!-- Player Info -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/playerNameText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Oyuncu Adı"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF" />
+
+        <TextView
+            android:id="@+id/levelAndWordsText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Level 5 • 120 kelime"
+            android:textSize="12sp"
+            android:textColor="#CCCCCC" />
+
+    </LinearLayout>
+
+    <!-- Score -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="end">
+
+        <TextView
+            android:id="@+id/scoreText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1250"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#FFD700" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="puan"
+            android:textSize="10sp"
+            android:textColor="#CCCCCC" />
+
+    </LinearLayout>
+
+    <!-- Medal for top 3 -->
+    <TextView
+        android:id="@+id/medalText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="🥇"
+        android:textSize="20sp"
+        android:layout_marginStart="8dp"
+        android:visibility="gone" />
+
+</LinearLayout>
