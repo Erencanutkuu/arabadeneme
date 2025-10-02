@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/garage_background"
+    android:gravity="center"
+    android:padding="24dp">
+
+    <!-- Success Animation ve Bilgiler -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <!-- Level Tamamlandı Metni -->
+        <TextView
+            android:id="@+id/levelText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🏆 5. Seviye Tamamlandı!"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:gravity="center"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Ödül Metni -->
+        <TextView
+            android:id="@+id/rewardText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="💰 +50 Coin Kazandınız!"
+            android:textSize="18sp"
+            android:textColor="#4CAF50"
+            android:gravity="center"
+            android:layout_marginBottom="32dp" />
+
+        <!-- Success Lottie Animasyon -->
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/completionLottie"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            app:lottie_fileName="correct_anim.json"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="false" />
+
+    </LinearLayout>
+
+    <!-- Loading Section -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginBottom="32dp">
+
+        <!-- Loading Text -->
+        <TextView
+            android:id="@+id/loadingText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🎉 Başarı kaydediliyor..."
+            android:textSize="16sp"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Progress Bar -->
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="8dp"
+            android:max="100"
+            android:progress="0"
+            android:progressTint="#4CAF50"
+            android:progressBackgroundTint="#666666"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Achievement Card -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="8dp"
+            app:cardBackgroundColor="#4CAF50">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🎯 Mükemmel!"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="#FFFFFF"
+                    android:layout_marginBottom="8dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Bir sonraki seviye açıldı!"
+                    android:textSize="14sp"
+                    android:textColor="#FFFFFF"
+                    android:gravity="center" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+    <!-- Footer -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Devam etmek için lütfen bekleyin..."
+        android:textSize="12sp"
+        android:textColor="#AAAAAA"
+        android:layout_marginBottom="16dp" />
+
+</LinearLayout>

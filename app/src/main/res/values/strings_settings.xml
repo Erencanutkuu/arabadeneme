@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Settings Screen -->
+    <string name="settings_title">⚙️ Ayarlar</string>
+    <string name="back_button">← Geri</string>
+
+    <!-- Settings Options -->
+    <string name="sound_effects">🔊 Ses Efektleri</string>
+    <string name="vibration">📳 Titreşim</string>
+    <string name="language_selection">🌍 Dil Seçimi</string>
+    <string name="account_linking">👤 Hesap Bağla</string>
+    <string name="backup">☁️ Yedekleme</string>
+    <string name="notifications">🔔 Bildirimler</string>
+
+    <!-- Settings Descriptions -->
+    <string name="sound_effects_desc">Oyun seslerini açar/kapatır</string>
+    <string name="vibration_desc">Çarpışmalarda titreşim efekti</string>
+    <string name="backup_desc">İlerlemelerinizi yedekleyin</string>
+    <string name="notifications_desc">Günlük hatırlatmalar</string>
+    <string name="account_status_unlinked">Verilerinizi güvenle saklayın</string>
+    <string name="account_status_linked">Hesap bağlı ✓</string>
+
+    <!-- Language Names -->
+    <string name="language_turkish">Türkçe</string>
+    <string name="language_english">English</string>
+    <string name="language_arabic">العربية</string>
+    <string name="language_french">Français</string>
+    <string name="language_german">Deutsch</string>
+    <string name="language_spanish">Español</string>
+
+    <!-- Dialog Messages -->
+    <string name="language_dialog_title">🌍 Dil Seçimi</string>
+    <string name="language_changed">Dil değiştirildi: %s</string>
+    <string name="language_restart_required">Dil değişikliği için uygulamayı yeniden başlatın</string>
+    <string name="cancel">İptal</string>
+    <string name="restart_app">Uygulamayı Yeniden Başlat</string>
+
+    <!-- Account Dialog -->
+    <string name="account_management_title">👤 Hesap Yönetimi</string>
+    <string name="account_unlink_message">Hesabınız başarıyla bağlı. Hesap bağlantısını kaldırmak istiyor musunuz?</string>
+    <string name="account_link_message">Verilerinizi güvenle saklamak ve farklı cihazlar arasında senkronize etmek için hesabınızı bağlayın.</string>
+    <string name="unlink_account">Bağlantıyı Kaldır</string>
+    <string name="link_with_google">Google ile Bağla</string>
+    <string name="link_with_facebook">Facebook ile Bağla</string>
+    <string name="account_unlinked">Hesap bağlantısı kaldırıldı</string>
+    <string name="account_linked_success">Hesap başarıyla bağlandı!</string>
+
+    <!-- Main Menu -->
+    <string name="main_menu_title">🚗 Ana Menü</string>
+    <string name="current_level">Mevcut Level: %1$d | En Yüksek Level: %2$d</string>
+    <string name="progress_text">İlerleme: %1$d/%2$d</string>
+    <string name="start_game">🎮 Oyuna Başla</string>
+    <string name="level_title">%d. SEVİYE</string>
+    <string name="daily_rewards">🎁 Ödüller</string>
+    <string name="map_selection">🗺️ Harita</string>
+
+    <!-- Level Descriptions -->
+    <string name="level_1_desc">Temel kelimeleri öğren</string>
+    <string name="level_2_desc">Günlük hayat kelimeleri</string>
+    <string name="level_3_desc">Doğa ve çevre</string>
+    <string name="level_4_desc">Meslekler ve iş</string>
+    <string name="level_5_desc">Yerler ve mekanlar</string>
+    <string name="level_6_desc">Sıfatlar ve özellikler</string>
+    <string name="level_7_desc">Zaman ifadeleri</string>
+    <string name="level_8_desc">Yemek ve içecek</string>
+    <string name="level_9_desc">Spor ve aktiviteler</string>
+    <string name="level_10_desc">Teknoloji ve gelecek</string>
+
+    <!-- Game Screen -->
+    <string name="word_learning_game">🚗 Kelime Öğrenme Oyunu</string>
+    <string name="score">Skor: %d</string>
+    <string name="lives">Can: %d</string>
+    <string name="level">Level: %d</string>
+    <string name="time">Süre: %d</string>
+    <string name="game_over">Oyun Bitti!</string>
+    <string name="level_completed">Level Tamamlandı!</string>
+    <string name="continue_game">Devam Et</string>
+    <string name="restart_game">Yeniden Başla</string>
+    <string name="main_menu">Ana Menü</string>
+
+    <!-- App Info -->
+    <string name="app_version">v1.0</string>
+</resources>

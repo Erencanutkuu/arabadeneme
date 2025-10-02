@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Settings Screen -->
+    <string name="settings_title">⚙️ Configuración</string>
+    <string name="back_button">← Volver</string>
+
+    <!-- Settings Options -->
+    <string name="sound_effects">🔊 Efectos de Sonido</string>
+    <string name="vibration">📳 Vibración</string>
+    <string name="language_selection">🌍 Selección de Idioma</string>
+    <string name="account_linking">👤 Vincular Cuenta</string>
+    <string name="backup">☁️ Respaldo</string>
+    <string name="notifications">🔔 Notificaciones</string>
+
+    <!-- Settings Descriptions -->
+    <string name="sound_effects_desc">Activar/desactivar sonidos del juego</string>
+    <string name="vibration_desc">Efecto de vibración en colisiones</string>
+    <string name="backup_desc">Respalda tu progreso</string>
+    <string name="notifications_desc">Recordatorios diarios</string>
+    <string name="account_status_unlinked">Guarda tus datos de forma segura</string>
+    <string name="account_status_linked">Cuenta vinculada ✓</string>
+
+    <!-- Language Names -->
+    <string name="language_turkish">Türkçe</string>
+    <string name="language_english">English</string>
+    <string name="language_arabic">العربية</string>
+    <string name="language_french">Français</string>
+    <string name="language_german">Deutsch</string>
+    <string name="language_spanish">Español</string>
+
+    <!-- Dialog Messages -->
+    <string name="language_dialog_title">🌍 Selección de Idioma</string>
+    <string name="language_changed">Idioma cambiado a: %s</string>
+    <string name="language_restart_required">Reinicia la app para aplicar cambios de idioma</string>
+    <string name="cancel">Cancelar</string>
+    <string name="restart_app">Reiniciar App</string>
+
+    <!-- Account Dialog -->
+    <string name="account_management_title">👤 Gestión de Cuenta</string>
+    <string name="account_unlink_message">Tu cuenta está vinculada exitosamente. ¿Quieres desvincular tu cuenta?</string>
+    <string name="account_link_message">Vincula tu cuenta para guardar tus datos de forma segura y sincronizar entre dispositivos.</string>
+    <string name="unlink_account">Desvincular Cuenta</string>
+    <string name="link_with_google">Vincular con Google</string>
+    <string name="link_with_facebook">Vincular con Facebook</string>
+    <string name="account_unlinked">Cuenta desvinculada</string>
+    <string name="account_linked_success">¡Cuenta vinculada exitosamente!</string>
+</resources>

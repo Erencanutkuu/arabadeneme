@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Settings Screen -->
+    <string name="settings_title">⚙️ Paramètres</string>
+    <string name="back_button">← Retour</string>
+
+    <!-- Settings Options -->
+    <string name="sound_effects">🔊 Effets Sonores</string>
+    <string name="vibration">📳 Vibration</string>
+    <string name="language_selection">🌍 Sélection de Langue</string>
+    <string name="account_linking">👤 Lier le Compte</string>
+    <string name="backup">☁️ Sauvegarde</string>
+    <string name="notifications">🔔 Notifications</string>
+
+    <!-- Settings Descriptions -->
+    <string name="sound_effects_desc">Activer/désactiver les sons du jeu</string>
+    <string name="vibration_desc">Effet de vibration lors des collisions</string>
+    <string name="backup_desc">Sauvegardez votre progression</string>
+    <string name="notifications_desc">Rappels quotidiens</string>
+    <string name="account_status_unlinked">Sauvegardez vos données en sécurité</string>
+    <string name="account_status_linked">Compte lié ✓</string>
+
+    <!-- Language Names -->
+    <string name="language_turkish">Türkçe</string>
+    <string name="language_english">English</string>
+    <string name="language_arabic">العربية</string>
+    <string name="language_french">Français</string>
+    <string name="language_german">Deutsch</string>
+    <string name="language_spanish">Español</string>
+
+    <!-- Dialog Messages -->
+    <string name="language_dialog_title">🌍 Sélection de Langue</string>
+    <string name="language_changed">Langue changée en : %s</string>
+    <string name="language_restart_required">Redémarrez l\'app pour appliquer les changements de langue</string>
+    <string name="cancel">Annuler</string>
+    <string name="restart_app">Redémarrer l\'App</string>
+
+    <!-- Account Dialog -->
+    <string name="account_management_title">👤 Gestion du Compte</string>
+    <string name="account_unlink_message">Votre compte est lié avec succès. Voulez-vous délier votre compte ?</string>
+    <string name="account_link_message">Liez votre compte pour sauvegarder vos données en sécurité et synchroniser entre appareils.</string>
+    <string name="unlink_account">Délier le Compte</string>
+    <string name="link_with_google">Lier avec Google</string>
+    <string name="link_with_facebook">Lier avec Facebook</string>
+    <string name="account_unlinked">Compte délié</string>
+    <string name="account_linked_success">Compte lié avec succès !</string>
+
+    <!-- Main Menu -->
+    <string name="main_menu_title">🚗 Menu Principal</string>
+    <string name="current_level">Niveau Actuel: %1$d | Plus Haut Niveau: %2$d</string>
+    <string name="progress_text">Progrès: %1$d/%2$d</string>
+    <string name="start_game">🎮 Commencer le Jeu</string>
+    <string name="level_title">NIVEAU %d</string>
+    <string name="daily_rewards">🎁 Récompenses</string>
+    <string name="map_selection">🗺️ Carte</string>
+
+    <!-- Level Descriptions -->
+    <string name="level_1_desc">Apprendre les mots de base</string>
+    <string name="level_2_desc">Vocabulaire de la vie quotidienne</string>
+    <string name="level_3_desc">Nature et environnement</string>
+    <string name="level_4_desc">Métiers et travail</string>
+    <string name="level_5_desc">Lieux et emplacements</string>
+    <string name="level_6_desc">Adjectifs et propriétés</string>
+    <string name="level_7_desc">Expressions temporelles</string>
+    <string name="level_8_desc">Nourriture et boissons</string>
+    <string name="level_9_desc">Sports et activités</string>
+    <string name="level_10_desc">Technologie et futur</string>
+
+    <!-- Game Screen -->
+    <string name="word_learning_game">🚗 Jeu d\'Apprentissage de Mots</string>
+    <string name="score">Score: %d</string>
+    <string name="lives">Vies: %d</string>
+    <string name="level">Niveau: %d</string>
+    <string name="time">Temps: %d</string>
+    <string name="game_over">Jeu Terminé!</string>
+    <string name="level_completed">Niveau Terminé!</string>
+    <string name="continue_game">Continuer</string>
+    <string name="restart_game">Recommencer</string>
+    <string name="main_menu">Menu Principal</string>
+
+    <!-- App Info -->
+    <string name="app_version">v1.0</string>
+</resources>

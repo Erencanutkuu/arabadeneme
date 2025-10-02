@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Kar zemini -->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:startColor="#F0F8FF"
+                android:endColor="#E6E6FA"
+                android:angle="270" />
+        </shape>
+    </item>
+
+    <!-- Buzlu yol -->
+    <item android:left="35dp" android:right="35dp">
+        <shape android:shape="rectangle">
+            <gradient
+                android:startColor="#B0C4DE"
+                android:endColor="#708090"
+                android:angle="270" />
+        </shape>
+    </item>
+
+    <!-- Kar kenarları -->
+    <item android:left="0dp" android:width="35dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#FFFAFA" />
+        </shape>
+    </item>
+
+    <item android:right="0dp" android:width="35dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#FFFAFA" />
+        </shape>
+    </item>
+
+    <!-- Soğuk hava efekti -->
+    <item android:top="0dp" android:height="90dp">
+        <shape android:shape="rectangle">
+            <gradient
+                android:startColor="#87CEEB"
+                android:endColor="#B0C4DE"
+                android:angle="90" />
+        </shape>
+    </item>
+
+    <!-- Buz çatlakları -->
+    <item android:top="180dp" android:height="2dp" android:left="50dp" android:right="50dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#4682B4" />
+        </shape>
+    </item>
+
+    <item android:top="320dp" android:height="2dp" android:left="50dp" android:right="50dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#4682B4" />
+        </shape>
+    </item>
+
+    <!-- Kar taneleri efekti -->
+    <item android:top="100dp" android:height="4dp" android:left="60dp" android:width="4dp">
+        <shape android:shape="oval">
+            <solid android:color="#FFFFFF" />
+        </shape>
+    </item>
+
+    <item android:top="200dp" android:height="4dp" android:right="80dp" android:width="4dp">
+        <shape android:shape="oval">
+            <solid android:color="#FFFFFF" />
+        </shape>
+    </item>
+
+</layer-list>

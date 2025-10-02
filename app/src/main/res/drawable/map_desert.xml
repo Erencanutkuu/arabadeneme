@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Çöl zemini -->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:startColor="#DAA520"
+                android:endColor="#B8860B"
+                android:angle="270" />
+        </shape>
+    </item>
+
+    <!-- Kumsal yol -->
+    <item android:left="30dp" android:right="30dp">
+        <shape android:shape="rectangle">
+            <gradient
+                android:startColor="#F4A460"
+                android:endColor="#DEB887"
+                android:angle="270" />
+        </shape>
+    </item>
+
+    <!-- Çöl kenarları -->
+    <item android:left="0dp" android:width="30dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#CD853F" />
+        </shape>
+    </item>
+
+    <item android:right="0dp" android:width="30dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#CD853F" />
+        </shape>
+    </item>
+
+    <!-- Güneş ışığı efekti -->
+    <item android:top="0dp" android:height="100dp">
+        <shape android:shape="rectangle">
+            <gradient
+                android:startColor="#FFD700"
+                android:endColor="#FFA500"
+                android:angle="90" />
+        </shape>
+    </item>
+
+    <!-- Kum dalgaları -->
+    <item android:top="120dp" android:height="3dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#DEB887" />
+        </shape>
+    </item>
+
+    <item android:top="250dp" android:height="3dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#DEB887" />
+        </shape>
+    </item>
+
+</layer-list>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Settings Screen -->
+    <string name="settings_title">⚙️ Einstellungen</string>
+    <string name="back_button">← Zurück</string>
+
+    <!-- Settings Options -->
+    <string name="sound_effects">🔊 Soundeffekte</string>
+    <string name="vibration">📳 Vibration</string>
+    <string name="language_selection">🌍 Sprachauswahl</string>
+    <string name="account_linking">👤 Konto Verknüpfen</string>
+    <string name="backup">☁️ Sicherung</string>
+    <string name="notifications">🔔 Benachrichtigungen</string>
+
+    <!-- Settings Descriptions -->
+    <string name="sound_effects_desc">Spielsounds ein-/ausschalten</string>
+    <string name="vibration_desc">Vibrationseffekt bei Kollisionen</string>
+    <string name="backup_desc">Sichern Sie Ihren Fortschritt</string>
+    <string name="notifications_desc">Tägliche Erinnerungen</string>
+    <string name="account_status_unlinked">Speichern Sie Ihre Daten sicher</string>
+    <string name="account_status_linked">Konto verknüpft ✓</string>
+
+    <!-- Language Names -->
+    <string name="language_turkish">Türkçe</string>
+    <string name="language_english">English</string>
+    <string name="language_arabic">العربية</string>
+    <string name="language_french">Français</string>
+    <string name="language_german">Deutsch</string>
+    <string name="language_spanish">Español</string>
+
+    <!-- Dialog Messages -->
+    <string name="language_dialog_title">🌍 Sprachauswahl</string>
+    <string name="language_changed">Sprache geändert zu: %s</string>
+    <string name="language_restart_required">App neu starten um Sprachänderungen anzuwenden</string>
+    <string name="cancel">Abbrechen</string>
+    <string name="restart_app">App Neu Starten</string>
+
+    <!-- Account Dialog -->
+    <string name="account_management_title">👤 Kontoverwaltung</string>
+    <string name="account_unlink_message">Ihr Konto ist erfolgreich verknüpft. Möchten Sie Ihr Konto trennen?</string>
+    <string name="account_link_message">Verknüpfen Sie Ihr Konto, um Ihre Daten sicher zu speichern und geräteübergreifend zu synchronisieren.</string>
+    <string name="unlink_account">Konto Trennen</string>
+    <string name="link_with_google">Mit Google Verknüpfen</string>
+    <string name="link_with_facebook">Mit Facebook Verknüpfen</string>
+    <string name="account_unlinked">Konto getrennt</string>
+    <string name="account_linked_success">Konto erfolgreich verknüpft!</string>
+</resources>

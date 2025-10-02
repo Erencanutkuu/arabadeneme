@@ -28,4 +28,12 @@ class StartScreenActivity : AppCompatActivity() {
             startActivity(Intent(this, MainMenuActivity::class.java))
         }
     }
+
+    override fun onResume() {
+        super.onResume()
+        // Para güncellemesini her dönüşte yap
+        val prefs = getSharedPreferences("GameConfig", Context.MODE_PRIVATE)
+        val money = prefs.getInt("money", 0)
+        findViewById<TextView>(R.id.moneyText).text = "💰 $money"
+    }
 }

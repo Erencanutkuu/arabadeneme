@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- Vibration permission -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -12,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Arabaoyunu2">
 
-        <!-- ANA MENÜ Artık uygulamayı başlatır -->
+        <!-- START SCREEN -->
         <activity
             android:name=".StartScreenActivity"
             android:exported="true">
@@ -22,6 +25,11 @@
             </intent-filter>
         </activity>
 
+        <!-- SPLASH SCREEN -->
+        <activity
+            android:name=".SplashActivity"
+            android:exported="false" />
+
         <!-- OYUN EKRANI -->
         <activity
             android:name=".MainActivity"
@@ -29,6 +37,10 @@
 
         <activity android:name=".GarageActivity" />
         <activity android:name=".MainMenuActivity" />
+        <activity android:name=".SettingsActivity" />
+        <activity android:name=".DailyRewardsActivity" />
+        <activity android:name=".MapSelectionActivity" />
+        <activity android:name=".LevelCompletionActivity" />
     </application>
 
 </manifest>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Settings Screen -->
+    <string name="settings_title">⚙️ الإعدادات</string>
+    <string name="back_button">← رجوع</string>
+
+    <!-- Settings Options -->
+    <string name="sound_effects">🔊 المؤثرات الصوتية</string>
+    <string name="vibration">📳 الاهتزاز</string>
+    <string name="language_selection">🌍 اختيار اللغة</string>
+    <string name="account_linking">👤 ربط الحساب</string>
+    <string name="backup">☁️ النسخ الاحتياطي</string>
+    <string name="notifications">🔔 الإشعارات</string>
+
+    <!-- Settings Descriptions -->
+    <string name="sound_effects_desc">تشغيل/إيقاف أصوات اللعبة</string>
+    <string name="vibration_desc">تأثير الاهتزاز عند التصادم</string>
+    <string name="backup_desc">احفظ تقدمك</string>
+    <string name="notifications_desc">تذكيرات يومية</string>
+    <string name="account_status_unlinked">احفظ بياناتك بأمان</string>
+    <string name="account_status_linked">تم ربط الحساب ✓</string>
+
+    <!-- Language Names -->
+    <string name="language_turkish">Türkçe</string>
+    <string name="language_english">English</string>
+    <string name="language_arabic">العربية</string>
+    <string name="language_french">Français</string>
+    <string name="language_german">Deutsch</string>
+    <string name="language_spanish">Español</string>
+
+    <!-- Dialog Messages -->
+    <string name="language_dialog_title">🌍 اختيار اللغة</string>
+    <string name="language_changed">تم تغيير اللغة إلى: %s</string>
+    <string name="language_restart_required">أعد تشغيل التطبيق لتطبيق تغييرات اللغة</string>
+    <string name="cancel">إلغاء</string>
+    <string name="restart_app">إعادة تشغيل التطبيق</string>
+
+    <!-- Account Dialog -->
+    <string name="account_management_title">👤 إدارة الحساب</string>
+    <string name="account_unlink_message">تم ربط حسابك بنجاح. هل تريد إلغاء ربط حسابك؟</string>
+    <string name="account_link_message">اربط حسابك لحفظ بياناتك بأمان ومزامنتها عبر الأجهزة.</string>
+    <string name="unlink_account">إلغاء ربط الحساب</string>
+    <string name="link_with_google">ربط مع جوجل</string>
+    <string name="link_with_facebook">ربط مع فيسبوك</string>
+    <string name="account_unlinked">تم إلغاء ربط الحساب</string>
+    <string name="account_linked_success">تم ربط الحساب بنجاح!</string>
+
+    <!-- Main Menu -->
+    <string name="main_menu_title">🚗 القائمة الرئيسية</string>
+    <string name="current_level">المستوى الحالي: %1$d | أعلى مستوى: %2$d</string>
+    <string name="progress_text">التقدم: %1$d/%2$d</string>
+    <string name="start_game">🎮 ابدأ اللعبة</string>
+    <string name="level_title">المستوى %d</string>
+    <string name="daily_rewards">🎁 المكافآت</string>
+    <string name="map_selection">🗺️ الخريطة</string>
+
+    <!-- Level Descriptions -->
+    <string name="level_1_desc">تعلم الكلمات الأساسية</string>
+    <string name="level_2_desc">مفردات الحياة اليومية</string>
+    <string name="level_3_desc">الطبيعة والبيئة</string>
+    <string name="level_4_desc">المهن والعمل</string>
+    <string name="level_5_desc">الأماكن والمواقع</string>
+    <string name="level_6_desc">الصفات والخصائص</string>
+    <string name="level_7_desc">تعبيرات الوقت</string>
+    <string name="level_8_desc">الطعام والمشروبات</string>
+    <string name="level_9_desc">الرياضة والأنشطة</string>
+    <string name="level_10_desc">التكنولوجيا والمستقبل</string>
+
+    <!-- Game Screen -->
+    <string name="word_learning_game">🚗 لعبة تعلم الكلمات</string>
+    <string name="score">النقاط: %d</string>
+    <string name="lives">الأرواح: %d</string>
+    <string name="level">المستوى: %d</string>
+    <string name="time">الوقت: %d</string>
+    <string name="game_over">انتهت اللعبة!</string>
+    <string name="level_completed">تم إكمال المستوى!</string>
+    <string name="continue_game">استمرار</string>
+    <string name="restart_game">إعادة بدء</string>
+    <string name="main_menu">القائمة الرئيسية</string>
+
+    <!-- App Info -->
+    <string name="app_version">الإصدار 1.0</string>
+</resources>

@@ -1,11 +1,14 @@
 package com.erencanutku.arabaoyunu2
 
 import android.animation.Animator
+import android.animation.ObjectAnimator
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.os.VibrationEffect
+import android.os.Vibrator
 import android.util.Log
 import android.view.GestureDetector
 import android.view.MotionEvent
@@ -39,6 +42,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var levelText: TextView
     private lateinit var rootLayout: ConstraintLayout
     private lateinit var fuelProgressBar: ProgressBar
+    private lateinit var vibrator: Vibrator
 
     private var answerHandled = false
     private var collisionHandled = false
@@ -55,6 +59,14 @@ class MainActivity : AppCompatActivity() {
         LevelSystem.setCurrentLevel(this, 1)
 
         initializeViews()
+
+        // Vibrator servisini başlat
+        vibrator = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+
+        // Harita temasını ayarla
+        val currentLevel = LevelSystem.getCurrentLevel(this)
+        val mapTheme = MapSystem.getMapForLevel(currentLevel)
+        rootLayout.setBackgroundResource(mapTheme.backgroundResource)
 
         gameManager = GameManager(this, scoreText, levelText, fuelProgressBar)
         gameManager.initializeLevel()
@@ -193,6 +205,11 @@ class MainActivity : AppCompatActivity() {
                 if (!collisionHandled) {
                     collisionHandled = true
                     val isGameOver = gameManager.loseFuel(15f) // Çarpışmada 15% yakıt kaybı
+
+                    // Screen shake ve vibration efektleri
+                    shakeScreen(25f)
+                    vibratePhone(300)
+
                     Toast.makeText(this, "💥 Çarpışma! -15% Yakıt", Toast.LENGTH_SHORT).show()
                     if (isGameOver) endGame()
                     else handler.postDelayed({ collisionHandled = false }, 1500)
@@ -352,6 +369,28 @@ class MainActivity : AppCompatActivity() {
             repeatCount = 1
         }
         view.startAnimation(scale)
+    }
+
+    private fun shakeScreen(intensity: Float = 20f) {
+        val shake = ObjectAnimator.ofFloat(rootLayout, "translationX", 0f, intensity, -intensity, intensity, -intensity, 0f).apply {
+            duration = 300
+        }
+        shake.start()
+    }
+
+    private fun vibratePhone(duration: Long = 200) {
+        // Settings'ten vibration kontrolü yap
+        val prefs = getSharedPreferences("GameSettings", Context.MODE_PRIVATE)
+        val vibrationEnabled = prefs.getBoolean("vibration_enabled", true)
+
+        if (vibrationEnabled && vibrator.hasVibrator()) {
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                vibrator.vibrate(VibrationEffect.createOneShot(duration, VibrationEffect.DEFAULT_AMPLITUDE))
+            } else {
+                @Suppress("DEPRECATION")
+                vibrator.vibrate(duration)
+            }
+        }
     }
 
     private fun restartLevel() {

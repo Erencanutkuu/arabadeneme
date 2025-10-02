@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Settings Screen -->
+    <string name="settings_title">⚙️ Settings</string>
+    <string name="back_button">← Back</string>
+
+    <!-- Settings Options -->
+    <string name="sound_effects">🔊 Sound Effects</string>
+    <string name="vibration">📳 Vibration</string>
+    <string name="language_selection">🌍 Language Selection</string>
+    <string name="account_linking">👤 Link Account</string>
+    <string name="backup">☁️ Backup</string>
+    <string name="notifications">🔔 Notifications</string>
+
+    <!-- Settings Descriptions -->
+    <string name="sound_effects_desc">Turn game sounds on/off</string>
+    <string name="vibration_desc">Vibration effect on collisions</string>
+    <string name="backup_desc">Backup your progress</string>
+    <string name="notifications_desc">Daily reminders</string>
+    <string name="account_status_unlinked">Securely save your data</string>
+    <string name="account_status_linked">Account linked ✓</string>
+
+    <!-- Language Names -->
+    <string name="language_turkish">Türkçe</string>
+    <string name="language_english">English</string>
+    <string name="language_arabic">العربية</string>
+    <string name="language_french">Français</string>
+    <string name="language_german">Deutsch</string>
+    <string name="language_spanish">Español</string>
+
+    <!-- Dialog Messages -->
+    <string name="language_dialog_title">🌍 Language Selection</string>
+    <string name="language_changed">Language changed to: %s</string>
+    <string name="language_restart_required">Restart app to apply language changes</string>
+    <string name="cancel">Cancel</string>
+    <string name="restart_app">Restart App</string>
+
+    <!-- Account Dialog -->
+    <string name="account_management_title">👤 Account Management</string>
+    <string name="account_unlink_message">Your account is successfully linked. Do you want to unlink your account?</string>
+    <string name="account_link_message">Link your account to securely save your data and sync across devices.</string>
+    <string name="unlink_account">Unlink Account</string>
+    <string name="link_with_google">Link with Google</string>
+    <string name="link_with_facebook">Link with Facebook</string>
+    <string name="account_unlinked">Account unlinked</string>
+    <string name="account_linked_success">Account successfully linked!</string>
+
+    <!-- Main Menu -->
+    <string name="main_menu_title">🚗 Main Menu</string>
+    <string name="current_level">Current Level: %1$d | Highest Level: %2$d</string>
+    <string name="progress_text">Progress: %1$d/%2$d</string>
+    <string name="start_game">🎮 Start Game</string>
+    <string name="level_title">LEVEL %d</string>
+    <string name="daily_rewards">🎁 Rewards</string>
+    <string name="map_selection">🗺️ Map</string>
+
+    <!-- Level Descriptions -->
+    <string name="level_1_desc">Learn basic words</string>
+    <string name="level_2_desc">Daily life vocabulary</string>
+    <string name="level_3_desc">Nature and environment</string>
+    <string name="level_4_desc">Jobs and work</string>
+    <string name="level_5_desc">Places and locations</string>
+    <string name="level_6_desc">Adjectives and properties</string>
+    <string name="level_7_desc">Time expressions</string>
+    <string name="level_8_desc">Food and drinks</string>
+    <string name="level_9_desc">Sports and activities</string>
+    <string name="level_10_desc">Technology and future</string>
+
+    <!-- Game Screen -->
+    <string name="word_learning_game">🚗 Word Learning Game</string>
+    <string name="score">Score: %d</string>
+    <string name="lives">Lives: %d</string>
+    <string name="level">Level: %d</string>
+    <string name="time">Time: %d</string>
+    <string name="game_over">Game Over!</string>
+    <string name="level_completed">Level Completed!</string>
+    <string name="continue_game">Continue</string>
+    <string name="restart_game">Restart</string>
+    <string name="main_menu">Main Menu</string>
+
+    <!-- App Info -->
+    <string name="app_version">v1.0</string>
+</resources>

@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#2C2C2C"
+    android:padding="24dp">
+
+    <!-- Header -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="32dp">
+
+        <TextView
+            android:id="@+id/backButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="← Geri"
+            android:textSize="18sp"
+            android:textColor="#FFFFFF"
+            android:padding="8dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="⚙️ Ayarlar"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:gravity="center" />
+
+        <View
+            android:layout_width="60dp"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <!-- Settings Card -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="8dp"
+        app:cardBackgroundColor="#3A3A3A"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <!-- Sound Setting -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="24dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="🔊 Ses Efektleri"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textColor="#FFFFFF" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Oyun seslerini açar/kapatır"
+                        android:textSize="14sp"
+                        android:textColor="#CCCCCC"
+                        android:layout_marginTop="4dp" />
+
+                </LinearLayout>
+
+                <Switch
+                    android:id="@+id/soundSwitch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true" />
+
+            </LinearLayout>
+
+            <!-- Vibration Setting -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="24dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="📳 Titreşim"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textColor="#FFFFFF" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Çarpışmalarda titreşim efekti"
+                        android:textSize="14sp"
+                        android:textColor="#CCCCCC"
+                        android:layout_marginTop="4dp" />
+
+                </LinearLayout>
+
+                <Switch
+                    android:id="@+id/vibrationSwitch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true" />
+
+            </LinearLayout>
+
+            <!-- Language Setting -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="24dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="8dp"
+                android:id="@+id/languageSelector">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="🌍 Dil Seçimi"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textColor="#FFFFFF" />
+
+                    <TextView
+                        android:id="@+id/selectedLanguage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Türkçe"
+                        android:textSize="14sp"
+                        android:textColor="#4CAF50"
+                        android:layout_marginTop="4dp" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="▶"
+                    android:textSize="16sp"
+                    android:textColor="#CCCCCC" />
+
+            </LinearLayout>
+
+            <!-- Account Linking -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="24dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="8dp"
+                android:id="@+id/accountLinking">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="👤 Hesap Bağla"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textColor="#FFFFFF" />
+
+                    <TextView
+                        android:id="@+id/accountStatus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Verilerinizi güvenle saklayın"
+                        android:textSize="14sp"
+                        android:textColor="#CCCCCC"
+                        android:layout_marginTop="4dp" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="▶"
+                    android:textSize="16sp"
+                    android:textColor="#CCCCCC" />
+
+            </LinearLayout>
+
+            <!-- Backup & Sync -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="24dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="8dp"
+                android:id="@+id/backupSync">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="☁️ Yedekleme &amp; Senkronizasyon"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textColor="#FFFFFF" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="İlerlemelerinizi yedekleyin"
+                        android:textSize="14sp"
+                        android:textColor="#CCCCCC"
+                        android:layout_marginTop="4dp" />
+
+                </LinearLayout>
+
+                <Switch
+                    android:id="@+id/backupSwitch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false" />
+
+            </LinearLayout>
+
+            <!-- Notifications -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="🔔 Bildirimler"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textColor="#FFFFFF" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Günlük hatırlatmalar"
+                        android:textSize="14sp"
+                        android:textColor="#CCCCCC"
+                        android:layout_marginTop="4dp" />
+
+                </LinearLayout>
+
+                <Switch
+                    android:id="@+id/notificationSwitch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <!-- Info Section -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginTop="32dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🚗 Kelime Öğrenme Oyunu"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="v1.0"
+            android:textSize="14sp"
+            android:textColor="#AAAAAA" />
+
+    </LinearLayout>
+
+</LinearLayout>

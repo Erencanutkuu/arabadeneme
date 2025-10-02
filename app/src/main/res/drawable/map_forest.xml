@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Orman zemini -->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:startColor="#2D5016"
+                android:endColor="#1A3009"
+                android:angle="270" />
+        </shape>
+    </item>
+
+    <!-- Toprak yol -->
+    <item android:left="40dp" android:right="40dp">
+        <shape android:shape="rectangle">
+            <gradient
+                android:startColor="#8B4513"
+                android:endColor="#654321"
+                android:angle="270" />
+        </shape>
+    </item>
+
+    <!-- Yol kenarları (çimen) -->
+    <item android:left="0dp" android:width="40dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#228B22" />
+        </shape>
+    </item>
+
+    <item android:right="0dp" android:width="40dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#228B22" />
+        </shape>
+    </item>
+
+    <!-- Ağaç gölgeleri -->
+    <item android:top="0dp" android:height="80dp">
+        <shape android:shape="rectangle">
+            <gradient
+                android:startColor="#1A3009"
+                android:endColor="#2D5016"
+                android:angle="90" />
+        </shape>
+    </item>
+
+    <!-- Yol çizgileri (kesikli) -->
+    <item android:top="150dp" android:height="2dp" android:left="80dp" android:right="80dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#FFFFFF" />
+        </shape>
+    </item>
+
+    <item android:top="300dp" android:height="2dp" android:left="80dp" android:right="80dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#FFFFFF" />
+        </shape>
+    </item>
+
+</layer-list>

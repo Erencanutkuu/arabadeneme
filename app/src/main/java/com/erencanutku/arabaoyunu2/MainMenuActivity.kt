@@ -2,6 +2,7 @@ package com.erencanutku.arabaoyunu2
 
 import android.content.Context
 import android.content.Intent
+import android.content.res.Configuration
 import android.os.Bundle
 import android.util.Log
 import android.view.Gravity
@@ -15,11 +16,16 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.airbnb.lottie.LottieAnimationView
 import com.airbnb.lottie.LottieDrawable
+import java.util.Locale
 
 class MainMenuActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main_menu)
+
+        // Kayıtlı dili uygula
+        applySavedLanguage()
+
+        setContentView(R.layout.activity_main_menu_simple)
 
         val startButton = findViewById<Button>(R.id.buttonStart)
         val levelPathContainer = findViewById<LinearLayout>(R.id.levelPathContainer)
@@ -28,16 +34,19 @@ class MainMenuActivity : AppCompatActivity() {
         val activeLevelDesc = findViewById<TextView>(R.id.activeLevelDesc)
         val progressText = findViewById<TextView>(R.id.progressText)
         val progressBar = findViewById<ProgressBar>(R.id.progressBar)
+        val settingsButton = findViewById<TextView>(R.id.settingsButton)
+        val dailyRewardsButton = findViewById<TextView>(R.id.dailyRewardsButton)
+        val mapSelectionButton = findViewById<TextView>(R.id.mapSelectionButton)
 
         // Mevcut leveli göster
         val currentLevel = LevelSystem.getCurrentLevel(this)
         val highestLevel = LevelSystem.getHighestLevel(this)
         val totalLevels = LevelSystem.getAllLevels().size
 
-        currentLevelText.text = "Mevcut Level: $currentLevel | En Yüksek Level: $highestLevel"
+        currentLevelText.text = getString(R.string.current_level, currentLevel, highestLevel)
 
         // İlerleme durumunu güncelle
-        progressText.text = "İlerleme: $highestLevel/$totalLevels"
+        progressText.text = getString(R.string.progress_text, highestLevel, totalLevels)
         progressBar.max = totalLevels
         progressBar.progress = highestLevel
 
@@ -52,6 +61,21 @@ class MainMenuActivity : AppCompatActivity() {
         // Aktif level bloğuna tıklama
         findViewById<LinearLayout>(R.id.activeLevelBlock).setOnClickListener {
             startActivity(Intent(this, MainActivity::class.java))
+        }
+
+        // Settings butonu
+        settingsButton.setOnClickListener {
+            startActivity(Intent(this, SettingsActivity::class.java))
+        }
+
+        // Daily Rewards butonu
+        dailyRewardsButton.setOnClickListener {
+            startActivity(Intent(this, DailyRewardsActivity::class.java))
+        }
+
+        // Map Selection butonu
+        mapSelectionButton.setOnClickListener {
+            startActivity(Intent(this, MapSelectionActivity::class.java))
         }
 
         // Duolingo tarzı level path'i oluştur
@@ -71,22 +95,23 @@ class MainMenuActivity : AppCompatActivity() {
 
     private fun updateActiveLevelInfo(title: TextView, desc: TextView, level: Int) {
         val levelData = LevelSystem.getLevel(level)
-        title.text = "$level. SEVİYE"
-        
-        val descriptions = mapOf(
-            1 to "Temel kelimeleri öğren",
-            2 to "Günlük hayat kelimeleri",
-            3 to "Doğa ve çevre",
-            4 to "Meslekler ve iş",
-            5 to "Yerler ve mekanlar",
-            6 to "Sıfatlar ve özellikler",
-            7 to "Zaman ifadeleri",
-            8 to "Yemek ve içecek",
-            9 to "Spor ve aktiviteler",
-            10 to "Teknoloji ve gelecek"
-        )
-        
-        desc.text = descriptions[level] ?: "Kelime öğren"
+        title.text = getString(R.string.level_title, level)
+
+        val descriptionResourceId = when (level) {
+            1 -> R.string.level_1_desc
+            2 -> R.string.level_2_desc
+            3 -> R.string.level_3_desc
+            4 -> R.string.level_4_desc
+            5 -> R.string.level_5_desc
+            6 -> R.string.level_6_desc
+            7 -> R.string.level_7_desc
+            8 -> R.string.level_8_desc
+            9 -> R.string.level_9_desc
+            10 -> R.string.level_10_desc
+            else -> R.string.level_1_desc
+        }
+
+        desc.text = getString(descriptionResourceId)
     }
 
     private fun createLevelPath(container: LinearLayout) {
@@ -98,8 +123,10 @@ class MainMenuActivity : AppCompatActivity() {
 
             // FrameLayout (Button + Animasyon üst üste)
             val levelFrame = FrameLayout(this).apply {
-                val size = resources.getDimensionPixelSize(R.dimen.level_button_size)
-                layoutParams = LinearLayout.LayoutParams(size, size).apply {
+                layoutParams = LinearLayout.LayoutParams(
+                    120, // sabit boyut
+                    120  // sabit boyut
+                ).apply {
                     gravity = Gravity.CENTER
                     setMargins(0, 12, 0, 12)
                 }
@@ -112,6 +139,10 @@ class MainMenuActivity : AppCompatActivity() {
                 setTextColor(ContextCompat.getColor(context, android.R.color.white))
                 background = ContextCompat.getDrawable(context, R.drawable.level_node)
                 isEnabled = LevelSystem.isLevelUnlocked(context, level.levelNumber)
+                layoutParams = FrameLayout.LayoutParams(
+                    FrameLayout.LayoutParams.MATCH_PARENT,
+                    FrameLayout.LayoutParams.MATCH_PARENT
+                )
 
                 setOnClickListener {
                     LevelSystem.setCurrentLevel(context, level.levelNumber)
@@ -119,7 +150,7 @@ class MainMenuActivity : AppCompatActivity() {
                 }
             }
 
-            // Tik animasyonu (Lottie)
+            // ✅ Tik animasyonu (Lottie) - tamamlanan leveller için
             val tickAnim = LottieAnimationView(this).apply {
                 setAnimation("correct_anim.json")
                 repeatCount = 0
@@ -139,14 +170,14 @@ class MainMenuActivity : AppCompatActivity() {
             levelFrame.addView(tickAnim)
             container.addView(levelFrame)
 
-            // Bağlayıcı çizgi yerine animasyon
+            // 🔗 Bağlayıcı animasyon - leveller arası
             if (i < allLevels.size - 1) {
                 val connectorAnim = LottieAnimationView(this).apply {
                     setAnimation("question_linear.json")
                     repeatCount = LottieDrawable.INFINITE
                     layoutParams = LinearLayout.LayoutParams(
-                        200,  // genişlik (çizgi kalınlığı gibi)
-                        200  // yükseklik (çizgi uzunluğu gibi)
+                        150,  // genişlik
+                        150   // yükseklik
                     ).apply {
                         gravity = Gravity.CENTER
                         setMargins(0, 8, 0, 8)
@@ -159,7 +190,19 @@ class MainMenuActivity : AppCompatActivity() {
         }
     }
 
+    private fun applySavedLanguage() {
+        val prefs = getSharedPreferences("GameSettings", Context.MODE_PRIVATE)
+        val savedLanguage = prefs.getString("selected_language", "tr") ?: "tr"
+        setLocale(savedLanguage)
+    }
 
+    private fun setLocale(languageCode: String) {
+        val locale = Locale(languageCode)
+        Locale.setDefault(locale)
+        val configuration = Configuration()
+        configuration.setLocale(locale)
+        resources.updateConfiguration(configuration, resources.displayMetrics)
+    }
 
 }
 
