@@ -10,18 +10,93 @@
 
     <!-- Üst başlık -->
 
-    <TextView
-        android:id="@+id/moneyText"
-        android:layout_width="wrap_content"
+    <!-- Top Bar with Feature Buttons -->
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="💰 0"
-        android:textSize="16sp"
-        android:textColor="#FFD700"
-        android:textStyle="bold"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:orientation="vertical"
+        android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="16dp">
+
+        <!-- Para göstergesi -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="16dp">
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/moneyText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="💰 0"
+                android:textSize="16sp"
+                android:textColor="#FFD700"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <!-- Özellik butonları -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:id="@+id/settingsButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="⚙️ Ayarlar"
+                android:textSize="14sp"
+                android:gravity="center"
+                android:background="#4CAF50"
+                android:textColor="#FFFFFF"
+                android:padding="12dp"
+                android:layout_marginEnd="4dp"
+                android:clickable="true"
+                android:focusable="true" />
+
+            <TextView
+                android:id="@+id/dailyRewardsButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="🎁 Ödüller"
+                android:textSize="14sp"
+                android:gravity="center"
+                android:background="#FF6B35"
+                android:textColor="#FFFFFF"
+                android:padding="12dp"
+                android:layout_marginHorizontal="4dp"
+                android:clickable="true"
+                android:focusable="true" />
+
+            <TextView
+                android:id="@+id/mapSelectionButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="🗺️ Harita"
+                android:textSize="14sp"
+                android:gravity="center"
+                android:background="#2196F3"
+                android:textColor="#FFFFFF"
+                android:padding="12dp"
+                android:layout_marginStart="4dp"
+                android:clickable="true"
+                android:focusable="true" />
+
+        </LinearLayout>
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -133,21 +208,29 @@
 
     </LinearLayout>
 
-    <!-- Level path container -->
-    <ScrollView
+    <!-- Level path container - DÜZELTİLMİŞ -->
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:padding="16dp">
+        android:layout_weight="1">
 
-        <LinearLayout
-            android:id="@+id/levelPathContainer"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center_horizontal" />
+            android:layout_height="match_parent"
+            android:padding="16dp"
+            android:fillViewport="true">
 
-    </ScrollView>
+            <LinearLayout
+                android:id="@+id/levelPathContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                android:paddingBottom="50dp" />
+
+        </ScrollView>
+
+    </FrameLayout>
 
 
     <com.airbnb.lottie.LottieAnimationView
