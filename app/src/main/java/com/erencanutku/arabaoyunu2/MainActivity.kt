@@ -28,6 +28,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var gameRunnable: Runnable
     private lateinit var carController: CarController
     private lateinit var lottieSuccess: LottieAnimationView
+    private lateinit var characterSystem: CharacterSystem
 
 
     private lateinit var carImage: ImageView
@@ -57,6 +58,9 @@ class MainActivity : AppCompatActivity() {
 
         // Test için level 1'den başla
         LevelSystem.setCurrentLevel(this, 1)
+
+        // Initialize character system
+        characterSystem = CharacterSystem(this)
 
         initializeViews()
 
@@ -113,6 +117,10 @@ class MainActivity : AppCompatActivity() {
             "car2" -> carImage.setImageResource(R.drawable.arabaengel)
             "car3" -> carImage.setImageResource(R.drawable.arabagorsel)
         }
+
+        // Show selected character info in a toast
+        val selectedCharacter = characterSystem.getSelectedCharacter()
+        Toast.makeText(this, "${selectedCharacter.emoji} ${selectedCharacter.name}", Toast.LENGTH_SHORT).show()
         lottieSuccess = findViewById(R.id.lottieSuccess)
 
         option1 = findViewById(R.id.option1)
@@ -149,8 +157,10 @@ class MainActivity : AppCompatActivity() {
                 if (isQuestionMode) moveQuestions(speed) else hideQuestions()
                 checkCollisions()
 
-                // Sürekli yakıt tüketimi (her frame'de küçük miktar)
-                val isGameOver = gameManager.loseFuel(0.05f) // Her 16ms'de 0.05% yakıt tüketimi
+                // Sürekli yakıt tüketimi (her frame'de küçük miktar) - karakter bonusu uygula
+                val selectedCharacter = characterSystem.getSelectedCharacter()
+                val fuelConsumption = 0.05f * selectedCharacter.fuelEfficiency
+                val isGameOver = gameManager.loseFuel(fuelConsumption)
                 if (isGameOver) {
                     endGame()
                     return
@@ -204,7 +214,10 @@ class MainActivity : AppCompatActivity() {
             if (isColliding(carX, carY, carW, carH, obs.x, obs.y, obs.width, obs.height)) {
                 if (!collisionHandled) {
                     collisionHandled = true
-                    val isGameOver = gameManager.loseFuel(15f) // Çarpışmada 15% yakıt kaybı
+                    // Karakter bonusu ile yakıt kaybını azalt
+                    val selectedCharacter = characterSystem.getSelectedCharacter()
+                    val fuelLoss = 15f * selectedCharacter.fuelEfficiency
+                    val isGameOver = gameManager.loseFuel(fuelLoss)
 
                     // Screen shake ve vibration efektleri
                     shakeScreen(25f)

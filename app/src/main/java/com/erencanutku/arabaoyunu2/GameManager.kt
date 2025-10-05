@@ -13,6 +13,7 @@ class GameManager(
     private val levelText: TextView,
     private val fuelProgressBar: ProgressBar? = null
 ) {
+    private lateinit var characterSystem: CharacterSystem
     private var currentLevel: Level? = null
     private var currentQuestionIndex = 0
     private var correctAnswersInLevel = 0
@@ -24,18 +25,24 @@ class GameManager(
     private var isGameRunning = true
 
     fun initializeLevel() {
+        // Initialize character system
+        characterSystem = CharacterSystem(context)
+
         currentLevel = LevelSystem.getCurrentLevelData(context)
         if (currentLevel == null) {
             LevelSystem.setCurrentLevel(context, 1)
             currentLevel = LevelSystem.getCurrentLevelData(context)
         }
-        
+
         questions = currentLevel!!.questions
         maxQuestionsInLevel = currentLevel!!.requiredCorrectAnswers
         currentQuestionIndex = 0
         correctAnswersInLevel = 0
-        obstacleSpeed = 7f + (currentLevel!!.levelNumber - 1) * 2f
-        
+
+        // Apply character speed bonus
+        val selectedCharacter = characterSystem.getSelectedCharacter()
+        obstacleSpeed = (7f + (currentLevel!!.levelNumber - 1) * 2f) * selectedCharacter.speedBonus
+
         updateLevelDisplay()
     }
 
@@ -72,10 +79,22 @@ class GameManager(
         if (!isGameRunning) return
 
         if (isCorrect) {
-            score++
+            // Apply character word bonus
+            val selectedCharacter = characterSystem.getSelectedCharacter()
+            val scoreIncrease = (1 * selectedCharacter.wordBonus).toInt()
+            score += scoreIncrease
             correctAnswersInLevel++
-            addFuel(20f) // Doğru cevapta 20% yakıt ekle
-            Toast.makeText(context, "✅ Doğru! +20% Yakıt", Toast.LENGTH_SHORT).show()
+
+            // Apply character fuel efficiency bonus
+            val fuelGain = 20f * selectedCharacter.fuelEfficiency
+            addFuel(fuelGain)
+
+            val message = if (scoreIncrease > 1) {
+                "✅ Doğru! +${fuelGain.toInt()}% Yakıt (+${scoreIncrease} puan)"
+            } else {
+                "✅ Doğru! +${fuelGain.toInt()}% Yakıt"
+            }
+            Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
             Log.d("DEBUG_LEVEL", "✅ Doğru cevaplandı. correctAnswersInLevel = $correctAnswersInLevel / $maxQuestionsInLevel")
 
             if (correctAnswersInLevel >= maxQuestionsInLevel) {
@@ -90,10 +109,12 @@ class GameManager(
             }
 
         } else {
-            val fuelLoss = 25f // Yanlış cevapta daha fazla yakıt kaybı
+            // Apply character fuel efficiency bonus to reduce fuel loss
+            val selectedCharacter = characterSystem.getSelectedCharacter()
+            val fuelLoss = 25f * selectedCharacter.fuelEfficiency
             fuel -= fuelLoss
             if (fuel < 0f) fuel = 0f
-            Toast.makeText(context, "❌ Yanlış! -25% Yakıt", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "❌ Yanlış! -${fuelLoss.toInt()}% Yakıt", Toast.LENGTH_SHORT).show()
 
             if (fuel <= 0f) {
                 isGameRunning = false

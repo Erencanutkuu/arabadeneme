@@ -3,194 +3,163 @@ package com.erencanutku.arabaoyunu2
 import android.content.Context
 
 data class Character(
-    val id: Int,
+    val id: String,
     val name: String,
     val emoji: String,
-    val description: String,
+    val ability: String,
     val unlockRequirement: String,
     val cost: Int = 0,
     val isUnlocked: Boolean = false,
-    val specialAbility: String = ""
+    val speedBonus: Float = 1.0f,
+    val fuelEfficiency: Float = 1.0f,
+    val wordBonus: Float = 1.0f
 )
 
-object CharacterSystem {
+class CharacterSystem(private val context: Context) {
 
     private val allCharacters = listOf(
         Character(
-            id = 1,
+            id = "starter",
             name = "Başlangıç Sürücüsü",
-            emoji = "😊",
-            description = "Öğrenmeye hevesli genç sürücü",
-            unlockRequirement = "Varsayılan karakter",
+            emoji = "🚗",
+            ability = "Başlangıç bonusu +10 puan",
+            unlockRequirement = "Başlangıçta mevcut",
             cost = 0,
-            specialAbility = "Başlangıç bonusu +10 puan"
+            isUnlocked = true,
+            speedBonus = 1.0f,
+            fuelEfficiency = 1.0f,
+            wordBonus = 1.0f
         ),
         Character(
-            id = 2,
+            id = "speedy",
             name = "Hızlı Hans",
-            emoji = "🏎️",
-            description = "Hız tutkuny professional racer",
+            emoji = "⚡",
+            ability = "+20% hız bonusu",
             unlockRequirement = "Level 3'e ulaş",
-            cost = 100,
-            specialAbility = "Hız bonusu +15%"
+            cost = 0,
+            isUnlocked = false,
+            speedBonus = 1.2f,
+            fuelEfficiency = 1.0f,
+            wordBonus = 1.0f
         ),
         Character(
-            id = 3,
+            id = "teacher",
             name = "Bilge Öğretmen",
             emoji = "👨‍🏫",
-            description = "Kelime ustasý academic",
-            unlockRequirement = "100 kelime öğren",
-            cost = 150,
-            specialAbility = "Kelime bonusu +20 puan"
+            ability = "+50% kelime puanı",
+            unlockRequirement = "50 kelime öğren",
+            cost = 0,
+            isUnlocked = false,
+            speedBonus = 1.0f,
+            fuelEfficiency = 1.0f,
+            wordBonus = 1.5f
         ),
         Character(
-            id = 4,
+            id = "explorer",
             name = "Gezgin",
-            emoji = "🧳",
-            description = "Dünyayý gezen polyglot",
-            unlockRequirement = "3 farklı dil kullan",
-            cost = 200,
-            specialAbility = "Çoklu dil bonusu +25%"
+            emoji = "🗺️",
+            ability = "Daha az yakıt tüketimi",
+            unlockRequirement = "Level 5'e ulaş",
+            cost = 0,
+            isUnlocked = false,
+            speedBonus = 1.0f,
+            fuelEfficiency = 0.8f,
+            wordBonus = 1.0f
         ),
         Character(
-            id = 5,
+            id = "ninja",
             name = "Ninja",
             emoji = "🥷",
-            description = "Gizli kelime ninja",
-            unlockRequirement = "Perfect skor 5 kez",
-            cost = 250,
-            specialAbility = "Yakıt tüketimi -%20"
+            ability = "Çarpışma hasarı -30%",
+            unlockRequirement = "5 mükemmel skor",
+            cost = 0,
+            isUnlocked = false,
+            speedBonus = 1.0f,
+            fuelEfficiency = 0.7f,
+            wordBonus = 1.0f
         ),
         Character(
-            id = 6,
+            id = "rocket",
             name = "Roket Adam",
             emoji = "🚀",
-            description = "Uzaydan gelen süper sürücü",
+            ability = "Süper hız bonusu",
             unlockRequirement = "Level 10'a ulaş",
-            cost = 300,
-            specialAbility = "Tüm bonuslar +30%"
+            cost = 0,
+            isUnlocked = false,
+            speedBonus = 0.8f,
+            fuelEfficiency = 1.0f,
+            wordBonus = 1.2f
         ),
         Character(
-            id = 7,
+            id = "cat",
             name = "Kedi Şoförü",
             emoji = "🐱",
-            description = "Sevimli kedi sürücü",
+            ability = "Ekstra şans bonusu",
             unlockRequirement = "7 gün üst üste oyna",
-            cost = 180,
-            specialAbility = "Can bonusu +1"
+            cost = 0,
+            isUnlocked = false,
+            speedBonus = 1.0f,
+            fuelEfficiency = 0.9f,
+            wordBonus = 1.1f
         ),
         Character(
-            id = 8,
+            id = "robot",
             name = "Robot",
             emoji = "🤖",
-            description = "AI destekli süper sürücü",
-            unlockRequirement = "1000 puan skora ulaş",
-            cost = 350,
-            specialAbility = "Otomatik doğru cevap %10"
+            ability = "Tüm bonuslar +25%",
+            unlockRequirement = "100 kelime öğren",
+            cost = 0,
+            isUnlocked = false,
+            speedBonus = 0.9f,
+            fuelEfficiency = 0.8f,
+            wordBonus = 1.3f
         )
     )
 
-    fun getAllCharacters(context: Context): List<Character> {
+    fun getAllCharacters(): List<Character> {
         return allCharacters.map { character ->
-            character.copy(isUnlocked = isCharacterUnlocked(context, character.id))
+            character.copy(isUnlocked = isCharacterUnlocked(character))
         }
     }
 
-    fun getUnlockedCharacters(context: Context): List<Character> {
-        return getAllCharacters(context).filter { it.isUnlocked }
+    fun getSelectedCharacter(): Character {
+        val selectedId = getSelectedCharacterId()
+        return getAllCharacters().find { it.id == selectedId } ?: getAllCharacters().first()
     }
 
-    fun isCharacterUnlocked(context: Context, characterId: Int): Boolean {
-        if (characterId == 1) return true // Varsayılan karakter
+    fun getSelectedCharacterId(): String {
+        val prefs = context.getSharedPreferences("GameSettings", Context.MODE_PRIVATE)
+        return prefs.getString("selected_character", "starter") ?: "starter"
+    }
 
-        val prefs = context.getSharedPreferences("GameStats", Context.MODE_PRIVATE)
-        val unlockedCharacters = prefs.getStringSet("unlocked_characters", setOf("1")) ?: setOf("1")
+    fun selectCharacter(characterId: String) {
+        val prefs = context.getSharedPreferences("GameSettings", Context.MODE_PRIVATE)
+        prefs.edit().putString("selected_character", characterId).apply()
+    }
 
-        if (unlockedCharacters.contains(characterId.toString())) return true
+    fun updateUnlockStatus(currentLevel: Int, wordsLearned: Int, perfectScores: Int, dailyStreak: Int, playerMoney: Int) {
+        // This method updates the game stats but doesn't change the unlock logic
+        // The unlock status is checked dynamically in isCharacterUnlocked
+    }
 
-        // Unlock koşullarını kontrol et
-        val character = allCharacters.find { it.id == characterId } ?: return false
+    private fun isCharacterUnlocked(character: Character): Boolean {
+        if (character.id == "starter") return true
 
-        return when (characterId) {
-            2 -> LevelSystem.getHighestLevel(context) >= 3
-            3 -> getTotalWordsLearned(context) >= 100
-            4 -> getLanguagesUsed(context) >= 3
-            5 -> getPerfectScoreCount(context) >= 5
-            6 -> LevelSystem.getHighestLevel(context) >= 10
-            7 -> getDailyPlayStreak(context) >= 7
-            8 -> prefs.getInt("personal_best_score", 0) >= 1000
+        val prefs = context.getSharedPreferences("GameSettings", Context.MODE_PRIVATE)
+        val currentLevel = prefs.getInt("current_level", 1)
+        val wordsLearned = prefs.getInt("words_learned", 0)
+        val perfectScores = prefs.getInt("perfect_scores", 0)
+        val dailyStreak = prefs.getInt("daily_streak", 0)
+
+        return when (character.id) {
+            "speedy" -> currentLevel >= 3
+            "teacher" -> wordsLearned >= 50
+            "explorer" -> currentLevel >= 5
+            "ninja" -> perfectScores >= 5
+            "rocket" -> currentLevel >= 10
+            "cat" -> dailyStreak >= 7
+            "robot" -> wordsLearned >= 100
             else -> false
         }
-    }
-
-    fun unlockCharacter(context: Context, characterId: Int): Boolean {
-        if (isCharacterUnlocked(context, characterId)) return true
-
-        val character = allCharacters.find { it.id == characterId } ?: return false
-        val prefs = context.getSharedPreferences("GameStats", Context.MODE_PRIVATE)
-        val money = prefs.getInt("money", 0)
-
-        if (money >= character.cost) {
-            // Parayı düş
-            prefs.edit().putInt("money", money - character.cost).apply()
-
-            // Karakteri unlock et
-            val unlockedCharacters = prefs.getStringSet("unlocked_characters", setOf("1"))?.toMutableSet() ?: mutableSetOf("1")
-            unlockedCharacters.add(characterId.toString())
-            prefs.edit().putStringSet("unlocked_characters", unlockedCharacters).apply()
-
-            return true
-        }
-        return false
-    }
-
-    fun setSelectedCharacter(context: Context, characterId: Int) {
-        if (isCharacterUnlocked(context, characterId)) {
-            val prefs = context.getSharedPreferences("GameStats", Context.MODE_PRIVATE)
-            prefs.edit().putInt("selected_character", characterId).apply()
-        }
-    }
-
-    fun getSelectedCharacter(context: Context): Character {
-        val prefs = context.getSharedPreferences("GameStats", Context.MODE_PRIVATE)
-        val selectedId = prefs.getInt("selected_character", 1)
-        return allCharacters.find { it.id == selectedId } ?: allCharacters[0]
-    }
-
-    fun getCharacterBonus(context: Context, baseScore: Int): Int {
-        val selectedCharacter = getSelectedCharacter(context)
-        return when (selectedCharacter.id) {
-            1 -> baseScore + 10
-            2 -> (baseScore * 1.15f).toInt()
-            3 -> baseScore + 20
-            4 -> (baseScore * 1.25f).toInt()
-            5 -> baseScore // Yakıt bonusu oyunda uygulanır
-            6 -> (baseScore * 1.30f).toInt()
-            7 -> baseScore // Can bonusu oyunda uygulanır
-            8 -> baseScore // Otomatik cevap oyunda uygulanır
-            else -> baseScore
-        }
-    }
-
-    // Helper functions
-    private fun getTotalWordsLearned(context: Context): Int {
-        val prefs = context.getSharedPreferences("GameStats", Context.MODE_PRIVATE)
-        return prefs.getInt("total_words_learned", 0)
-    }
-
-    private fun getLanguagesUsed(context: Context): Int {
-        val prefs = context.getSharedPreferences("GameSettings", Context.MODE_PRIVATE)
-        val usedLanguages = prefs.getStringSet("languages_used", setOf()) ?: setOf()
-        return usedLanguages.size
-    }
-
-    private fun getPerfectScoreCount(context: Context): Int {
-        val prefs = context.getSharedPreferences("GameStats", Context.MODE_PRIVATE)
-        return prefs.getInt("perfect_score_count", 0)
-    }
-
-    private fun getDailyPlayStreak(context: Context): Int {
-        val prefs = context.getSharedPreferences("GameStats", Context.MODE_PRIVATE)
-        return prefs.getInt("daily_play_streak", 0)
     }
 }

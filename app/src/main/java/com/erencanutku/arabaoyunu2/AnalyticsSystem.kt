@@ -14,7 +14,7 @@ data class GameSession(
     val wordsCorrect: Int,
     val wordsWrong: Int,
     val collisions: Int,
-    val characterUsed: Int
+    val characterUsed: String
 )
 
 data class PlayerStats(
@@ -50,7 +50,8 @@ object AnalyticsSystem {
 
         // Bugünün tarihi
         val today = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())
-        val selectedCharacter = CharacterSystem.getSelectedCharacter(context).id
+        val characterSystem = CharacterSystem(context)
+        val selectedCharacter = characterSystem.getSelectedCharacter().id
 
         // Session kaydet
         val session = GameSession(
@@ -199,7 +200,7 @@ object AnalyticsSystem {
             bestScore = prefs.getInt("personal_best_score", 0),
             totalWordsLearned = prefs.getInt("total_words_learned", 0),
             accuracy = accuracy,
-            favoriteCharacter = CharacterSystem.getSelectedCharacter(context),
+            favoriteCharacter = CharacterSystem(context).getSelectedCharacter(),
             currentStreak = prefs.getInt("daily_play_streak", 0),
             longestStreak = prefs.getInt("longest_streak", 0),
             dailyGoalProgress = getDailyGoalProgress(context),
@@ -259,7 +260,7 @@ object AnalyticsSystem {
             .mapValues { it.value.size }
             .maxByOrNull { it.value }
 
-        return characterUsage?.let { CharacterSystem.getAllCharacters(context).find { char -> char.id == it.key } }
+        return characterUsage?.let { usage -> CharacterSystem(context).getAllCharacters().find { char: Character -> char.id == usage.key } }
     }
 
     private fun getRecentSessions(context: Context, days: Int): List<GameSession> {
@@ -279,7 +280,7 @@ object AnalyticsSystem {
                     wordsCorrect = obj.getInt("wordsCorrect"),
                     wordsWrong = obj.getInt("wordsWrong"),
                     collisions = obj.getInt("collisions"),
-                    characterUsed = obj.getInt("characterUsed")
+                    characterUsed = obj.getString("characterUsed")
                 )
             )
         }
